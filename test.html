@@ -4,7 +4,16 @@
   <body>
     <div ng-app="">
       <p>Name: <input type="text" ng-model="name"></p>
-      <p>You wrote: {{ name }}</p>
+    </div>
+    <div ng-app="">
+      <form>
+        Check to show a header:
+        <input type="checkbox" ng-model="myVar">
+      </form>
+    </div>
+    <div>
+      <p ng-show="myVar">Checkbox on</p>
+      <p>>Running total:  {{ name }}</p>
     </div>
   </body>
 </html>
