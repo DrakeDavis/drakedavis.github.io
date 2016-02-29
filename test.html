@@ -3,13 +3,14 @@
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <body>
     <div ng-app="">
-      <p>Name: <input type="text" ng-model="name"></p>
+      <p>Name: <input type="text" ng-model="total"></p>
       <form>
-        Check to show a header:
         <input type="checkbox" ng-model="myVar">
+        <input type="checkbox" ng-model="checkBox2">
       </form>
       <p ng-show="myVar">Checkbox on</p>
-      <p>>Running total:  {{ name }}</p>
+      <p ng-show="checkBox2">Checkbox 2 on</p>
+      <p>Running total:  {{ total }}</p>
     </div>
   </body>
 </html>
