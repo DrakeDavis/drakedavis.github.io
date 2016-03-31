@@ -11,14 +11,14 @@
       {
         $scope.count = $scope.baseNumber + $scope.roll;
 
-        if($scope.checkBox)
+        if($scope.favoredEnemy)
         {
           $scope.count = $scope.count + 2;
         }
 
-        if($scope.checkBox2)
+        if($scope.bardicPerformance)
         {
-          $scope.count = $scope.count + 2;
+          $scope.count = $scope.count + 3;
         }
         
       };
@@ -28,15 +28,15 @@
   <body ng-app="myApp">
     <div ng-controller="myCtrl">
       <form>
-        <p>FirstNumber: <input type="number" ng-model="roll" ng-change="myFunc()"></p>
-        <p>Second Number: <input type="number" ng-model="baseNumber" ng-change="myFunc()"></p>
-        <p><input type="checkbox" ng-model="checkBox" ng-change="myFunc()"></p>
-        <p><input type="checkbox" ng-model="checkBox2" ng-change="myFunc()"></p>
+        <p>d20 roll: <input type="number" ng-model="roll" ng-change="myFunc()"></p>
+        <p>Attack Bonus: <input type="number" ng-model="baseNumber" ng-change="myFunc()"></p>
+        <p>Are you attacking a favored enemy?<input type="checkbox" ng-model="favoredEnemy" ng-change="myFunc()"></p>
+        <p>Are you under the effects of a bardic performance?<input type="checkbox" ng-model="bardicPerformance" ng-change="myFunc()"></p>
       </form>
       <p>Running total: {{ count }}</p>
       <div style = "align:right">
-        <p ng-show="checkBox">Checkbox on</p>
-        <p ng-show="checkBox2">Checkbox 2 on</p>
+        <p ng-show="favoredEnemy">Checkbox on</p>
+        <p ng-show="bardicPerformance">Checkbox 2 on</p>
       </div>
     </div>  
   </body>
