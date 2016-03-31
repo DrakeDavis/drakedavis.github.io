@@ -15,10 +15,21 @@
         {
           $scope.count = $scope.count + 2;
         }
-
         if($scope.bardicPerformance)
         {
           $scope.count = $scope.count + 3;
+        }
+        if($scope.haste)
+        {
+          $scope.count = $scope.count + 1;
+        }
+        if($scope.goodHope)
+        {
+          $scope.count = $scope.count + 2;
+        }
+        if($scope.plusOneArrows)
+        {
+          $scope.count = $scope.count + 1;
         }
         
       };
@@ -30,8 +41,14 @@
       <form>
         <p>d20 roll: <input type="number" ng-model="roll" ng-change="myFunc()"></p>
         <p>Attack Bonus: <input type="number" ng-model="baseNumber" ng-change="myFunc()"></p>
-        <p>Are you attacking a favored enemy?<input type="checkbox" ng-model="favoredEnemy" ng-change="myFunc()"></p>
-        <p>Are you under the effects of a bardic performance?<input type="checkbox" ng-model="bardicPerformance" ng-change="myFunc()"></p>
+        <p></p>
+        <p>Which effects are you under?</p>
+        <p>Attacking a favored enemy<input type="checkbox" ng-model="favoredEnemy" ng-change="myFunc()"></p>
+        <p>Bardic Performance<input type="checkbox" ng-model="bardicPerformance" ng-change="myFunc()"></p>
+        <p>Haste<input type="checkbox" ng-model="haste" ng-change="myFunc()"></p>
+        <p>Good Hope<input type="checkbox" ng-model="goodHope" ng-change="myFunc()"></p>
+        <p>Arrows with a +1 modifer<input type="checkbox" ng-model="plusOneArrows" ng-change="myFunc()"></p>
+        
       </form>
       <p>Running total: {{ count }}</p>
       <div style = "align:right">
