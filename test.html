@@ -5,55 +5,79 @@
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) 
     {
-      $scope.count = 0;
+	  $scope.attackOne = 0;
+	  $scope.attackTwo = 0;
+	  $scope.attackThree = 0;
+
+      $scope.checkBoxBonuses = 0;
 
       $scope.myFunc = function() 
       {
-        $scope.count = $scope.baseNumber + $scope.roll;
-
         if($scope.favoredEnemy)
         {
-          $scope.count = $scope.count + 2;
+          $scope.checkBoxBonuses = $scope.checkBoxBonuses + 2;
         }
         if($scope.bardicPerformance)
         {
-          $scope.count = $scope.count + 3;
+          $scope.checkBoxBonuses = $scope.checkBoxBonuses + 3;
         }
         if($scope.haste)
         {
-          $scope.count = $scope.count + 1;
+          $scope.checkBoxBonuses = $scope.checkBoxBonuses + 1;
         }
         if($scope.goodHope)
         {
-          $scope.count = $scope.count + 2;
+          $scope.checkBoxBonuses = $scope.checkBoxBonuses + 2;
         }
         if($scope.plusOneArrows)
         {
-          $scope.count = $scope.count + 1;
+          $scope.checkBoxBonuses = $scope.checkBoxBonuses + 1;
         }
-        
+
+     	$scope.attackOne = $scope.checkBoxBonuses + $scope.attackBonusOne + $scope.rollOne;
+     	$scope.attackTwo = $scope.checkBoxBonuses + $scope.attackBonusTwo + $scope.rollTwo;
+     	$scope.attackThree = $scope.checkBoxBonuses + $scope.attackBonusThree + $scope.rollThree;
+        $scope.checkBoxBonuses = 0;
       };
 
     });
   </script>
   <body ng-app="myApp">
-    <div ng-controller="myCtrl">
+  	<h1>Attack Calculator</h1>
+    <div ng-controller="myCtrl" style="padding-left: 7px;">
+    <div style="float:left">
       <form>
-        <p>d20 roll: <input type="number" ng-model="roll" ng-change="myFunc()"></p>
-        <p>Attack Bonus: <input type="number" ng-model="baseNumber" ng-change="myFunc()"></p>
+        <p>d20 rolls: 
+	        <input type="number" ng-model="rollOne" ng-change="myFunc()" min="1" max="20">
+	        <input type="number" ng-model="rollTwo" ng-change="myFunc()" min="1" max="20">
+	        <input type="number" ng-model="rollThree" ng-change="myFunc()" min="1" max="20">
+        </p>
+        <p>Attack Bonuses: 
+        	<input type="number" ng-model="attackBonusOne" ng-change="myFunc()" min="1" max="99">
+        	<input type="number" ng-model="attackBonusTwo" ng-change="myFunc()" min="1" max="99">
+        	<input type="number" ng-model="attackBonusThree" ng-change="myFunc()" min="1" max="99">
+        </p>
         <p></p>
         <p>Which effects are you under?</p>
-        <p>Attacking a favored enemy<input type="checkbox" ng-model="favoredEnemy" ng-change="myFunc()"></p>
-        <p>Bardic Performance<input type="checkbox" ng-model="bardicPerformance" ng-change="myFunc()"></p>
-        <p>Haste<input type="checkbox" ng-model="haste" ng-change="myFunc()"></p>
-        <p>Good Hope<input type="checkbox" ng-model="goodHope" ng-change="myFunc()"></p>
-        <p>Arrows with a +1 modifer<input type="checkbox" ng-model="plusOneArrows" ng-change="myFunc()"></p>
-        
+        <ul style="list-style: none;">
+	        <li><input type="checkbox" ng-model="favoredEnemy" ng-change="myFunc()">Attacking a favored enemy</li>
+	        <li><input type="checkbox" ng-model="bardicPerformance" ng-change="myFunc()">Bardic Performance</li>
+	        <li><input type="checkbox" ng-model="haste" ng-change="myFunc()">Haste</li>
+	        <li><input type="checkbox" ng-model="goodHope" ng-change="myFunc()">Good Hope</li>
+	        <li><input type="checkbox" ng-model="plusOneArrows" ng-change="myFunc()">Arrows with a +1 modifier</li>
+        </ul>
       </form>
-      <p>Running total: {{ count }}</p>
-      <div style = "align:right">
+      </div>
+      <div style="float:left; padding-left: 25px; font-size: 22px;">
+	  	<ul style="list-style: none;">
+	  		<li ng-show="attackOne">Attack One: {{ attackOne }}</li>
+	   	 	<li ng-show="attackTwo">Attack Two: {{ attackTwo }}</li>
+	    	<li ng-show="attackThree">Attack Three: {{ attackThree }}</li>
+	    </ul>
+	    <!--	
         <p ng-show="favoredEnemy">Checkbox on</p>
         <p ng-show="bardicPerformance">Checkbox 2 on</p>
+      	-->
       </div>
     </div>  
   </body>
