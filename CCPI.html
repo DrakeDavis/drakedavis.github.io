@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script>
+	.table td 
+	{
+	   text-align: center;   
+	}
+</script>
+
+<body>
+	<h1 class="text-center"> CCPI </h1>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+
+	<div style="margin-top: 30px">
+		<table class="table" style="width: auto; margin:auto;">
+			<tr scope="row">
+				<th>Cryptocurrency</th>
+				<th>Price</th>
+				<th>Monthly Popularity Score</th>
+				<th>Weekly Popularity Score</th>
+				<th>3day Popularity Score</th>
+				<th>Popularity change</th>
+			</tr>
+			<tr ng-repeat="currency in currencies" scope="row">
+				<td>{{ currency.name }}</td>
+				<td>{{ currency.price }}</td>
+				<td>{{ currency.monthlyAverage }}</td>
+				<td>{{ currency.weeklyAverage }}</td>
+				<td>{{ currency.threeDayAverage }}</td>
+				<td>{{ currency.percentChange }}%</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
+    .then(function (response) {$scope.currencies = response.data;});
+});
+</script>
+
+</body>
+</html>
