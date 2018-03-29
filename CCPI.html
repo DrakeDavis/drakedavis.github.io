@@ -22,6 +22,7 @@
 			<tr scope="row">
 				<th>Cryptocurrency</th>
 				<th>Price</th>
+				<th>Current Popularity</th>
 				<th>Monthly Popularity Score</th>
 				<th>Weekly Popularity Score</th>
 				<th>3day Popularity Score</th>
@@ -30,9 +31,10 @@
 			<tr ng-repeat="currency in currencies" scope="row">
 				<td>{{ currency.name }}</td>
 				<td>{{ currency.price }}</td>
-				<td>{{ currency.monthlyAverage }}</td>
-				<td>{{ currency.weeklyAverage }}</td>
-				<td>{{ currency.threeDayAverage }}</td>
+				<td>{{ currency.lastDayPopularity }}</td>
+				<td>{{ currency.monthlyAveragePopularity }}</td>
+				<td>{{ currency.weeklyAveragePopularity }}</td>
+				<td>{{ currency.threeDayAveragePopularity }}</td>
 				<td>{{ currency.percentChange }}%</td>
 			</tr>
 		</table>
