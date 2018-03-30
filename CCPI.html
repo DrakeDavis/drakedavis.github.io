@@ -12,30 +12,35 @@
 </script>
 
 <body>
-	<h1 class="text-center"> CCPI </h1>
+	<h1 class="text-center"> Crypocurrency Popularity Index</h1>
 
 <div ng-app="myApp" ng-controller="customersCtrl"> 
 
 
-	<div style="margin-top: 30px">
+	<div style="margin-top: 40px">
 		<table class="table" style="width: auto; margin:auto;">
 			<tr scope="row">
 				<th>Cryptocurrency</th>
 				<th>Price</th>
-				<th>Current Popularity</th>
-				<th>Monthly Popularity Score</th>
-				<th>Weekly Popularity Score</th>
-				<th>3day Popularity Score</th>
+				<th>Monthly Popularity Average</th>
+				<th>3day Popularity Average</th>
 				<th>Popularity change</th>
 			</tr>
 			<tr ng-repeat="currency in currencies" scope="row">
-				<td>{{ currency.name }}</td>
-				<td>{{ currency.price }}</td>
-				<td>{{ currency.lastDayPopularity }}</td>
-				<td>{{ currency.monthlyAveragePopularity }}</td>
-				<td>{{ currency.weeklyAveragePopularity }}</td>
-				<td>{{ currency.threeDayAveragePopularity }}</td>
-				<td>{{ currency.percentChange }}%</td>
+				<td>
+					<a href="https://coinmarketcap.com/currencies/{{ currency.id }}">
+						{{ currency.name }}
+					</a>
+				</td>
+
+				<td>${{ currency.price | number: 2}}</td>
+				<td align="center">{{ currency.monthlyAveragePopularity }}</td>
+				<td align="center">{{ currency.threeDayAveragePopularity }}</td>
+				<td align="center">
+					<a href="https://trends.google.com/trends/explore?date=today%201-m&q={{ currency.name }}">
+						{{ currency.percentChange }}%
+					</a>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -43,11 +48,11 @@
 </div>
 
 <script>
-var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, $http) {
-    $http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
-    .then(function (response) {$scope.currencies = response.data;});
-});
+	var app = angular.module('myApp', []);
+	app.controller('customersCtrl', function($scope, $http) {
+		$http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
+		.then(function (response) {$scope.currencies = response.data;});
+	});
 </script>
 
 </body>
