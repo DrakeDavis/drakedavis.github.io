@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<script>
-	.table td 
-	{
-	   text-align: center;   
-	}
-</script>
-
-<body>
-	<h1 class="text-center"> Crypocurrency Popularity Index</h1>
-
-<div ng-app="myApp" ng-controller="customersCtrl"> 
-
-
-	<div style="margin-top: 40px">
-		<table class="table" style="width: auto; margin:auto;">
-			<tr scope="row">
-				<th>Cryptocurrency</th>
-				<th>Price</th>
-				<th>Monthly Popularity Average</th>
-				<th>3day Popularity Average</th>
-				<th>Popularity change</th>
-			</tr>
-			<tr ng-repeat="currency in currencies" scope="row">
-				<td>
-					<a href="https://coinmarketcap.com/currencies/{{ currency.id }}">
-						{{ currency.name }}
-					</a>
-				</td>
-
-				<td>${{ currency.price | number: 2}}</td>
-				<td align="center">{{ currency.monthlyAveragePopularity }}</td>
-				<td align="center">{{ currency.threeDayAveragePopularity }}</td>
-				<td align="center">
-					<a href="https://trends.google.com/trends/explore?date=today%201-m&q={{ currency.name }}">
-						{{ currency.percentChange }}%
-					</a>
-				</td>
-			</tr>
-		</table>
-	</div>
-
-</div>
-
-<script>
-	var app = angular.module('myApp', []);
-	app.controller('customersCtrl', function($scope, $http) {
-		$http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
-		.then(function (response) {$scope.currencies = response.data;});
-	});
-</script>
-
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('customersCtrl', function($scope, $http) {
+				$http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
+				.then(function (response) {$scope.currencies = response.data;});
+			});
+			
+			function showCCPI(){
+			   		var modal = document.getElementById("modalPopup");
+			   		modal.classList.add("hidden");
+			
+				var table = document.getElementById("ccpi");
+				table.classList.remove("hidden");
+			}
+		</script>
+	</head>
+	<body>
+		<h1 class="text-center"> Cryptocurrency Popularity Index</h1>
+		<!-- Disclaimer-->
+		<div class="model w-50" id="modalPopup" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered " role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title" id="exampleModalLongTitle">Disclaimer</h3>
+					</div>
+					<div class="modal-body">
+						This data aggregation is for informational purposes only. 
+						</br>
+						Speculate on cryptocurrencies at your own risk.
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="showCCPI()">I understand</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- The CCPI table -->
+		<div ng-app="myApp" ng-controller="customersCtrl">
+			<div id="ccpi" style="margin-top: 40px" class="hidden">
+				<table class="table" style="width: auto; margin:auto;">
+					<tr scope="row">
+						<th>Cryptocurrency</th>
+						<th>Price</th>
+						<th>Monthly Popularity Average</th>
+						<th>3day Popularity Average</th>
+						<th>Popularity change</th>
+					</tr>
+					<tr ng-repeat="currency in currencies" scope="row">
+						<td>
+							<a href="https://coinmarketcap.com/currencies/{{ currency.id }}">
+							{{ currency.name }}
+							</a>
+						</td>
+						<td>${{ currency.price | number: 2}}</td>
+						<td align="center">{{ currency.monthlyAveragePopularity }}</td>
+						<td align="center">{{ currency.threeDayAveragePopularity }}</td>
+						<td align="center">
+							<a href="https://trends.google.com/trends/explore?date=today%201-m&q={{ currency.name }}">
+							{{ currency.percentChange }}%
+							</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--Footer-->
+		<footer class="page-footer font-small blue pt-4 mt-4" style="margin-top: 40px">
+			<div class="footer-copyright py-3 text-center">
+				Created by Drake Davis. See the code behind this on
+				<a href="https://github.com/Drakexor/CryptoCurrencyPopularityIndex"> GitHub</a>.
+			</div>
+		</footer>
+	</body>
 </html>
