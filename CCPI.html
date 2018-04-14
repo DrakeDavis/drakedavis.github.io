@@ -4,13 +4,34 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+		<script data-require="ui-bootstrap@*" data-semver="1.3.2" src="https://cdn.rawgit.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-1.3.2.js"></script>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<script>
-			var app = angular.module('myApp', []);
-			app.controller('customersCtrl', function($scope, $http) {
+			var app = angular.module('myApp', ['ui.bootstrap']);
+			app.controller('ccpiCtrl', function($scope, $http) {
 				$http.get("https://s3.us-east-2.amazonaws.com/cryptopopindex/latestData.json")
-				.then(function (response) {$scope.currencies = response.data;});
+				.then(function (response) {
+					$scope.currencies = response.data;
+					$scope.totalItems = $scope.currencies.length;
+					$scope.currentPage = 1;
+					$scope.itemsPerPage = 15;
+
+					//This function watches when pagination changes
+	  				$scope.$watch("currentPage", function() {
+						setPagingData($scope.currentPage);
+					});
+
+	  				//This sets the dataset to whatever should be shown for a passed in page
+					function setPagingData(page) {
+						currencies = $scope.currencies
+						var pagedData = currencies.slice(
+							(page - 1) * $scope.itemsPerPage,
+							page * $scope.itemsPerPage
+						);
+						$scope.paginatedCurrencies = pagedData;
+					}
+  				});
 			});
 			
 			function showCCPI(){
@@ -30,15 +51,14 @@
 			}
 
 			function showExplanation(){		
-				//var table = document.getElementById("ccpi");
-				//table.classList.add("hidden");
-
 				var modal = document.getElementById("explanationModal");
 			   	modal.classList.remove("hidden");
 			}
-
-
 		</script>
+		<style type="text/css">
+			/* I hate using the !important tag, but thats the price for using Boostrap's .css */
+			body { background: #FAFAFA !important; } 
+		</style>
 	</head>
 	<body>
 		<div class="text-center" style="margin-top:30px">
@@ -91,11 +111,11 @@
 			</div>
 		</div>
 		<!-- The CCPI table -->
-		<div ng-app="myApp" ng-controller="customersCtrl">
+		<div ng-app="myApp" ng-controller="ccpiCtrl">
 			<div id="ccpi" style="margin-top: 40px" class="hidden">
 				<!-- I coded the python portion to send the epoch time, and figured out that I need the *1000 because the time is in miliseconds -->
 				<h6 class="text-center">
-					Data last retrieved:: {{ currencies[0].lastUpdated * 1000  |  date:"MM/dd/yyyy 'at' h:mma" }}
+					Data last retrieved at: {{ currencies[0].lastUpdated * 1000  |  date:"MM/dd/yyyy 'at' h:mma" }}
 				</h6>
 				<table class="table" style="width: auto; margin:auto;">
 					<tr scope="row">
@@ -105,13 +125,13 @@
 						<th>3day Popularity Average</th>
 						<th>Popularity change</th>
 					</tr>
-					<tr ng-repeat="currency in currencies" scope="row">
+					<tr ng-repeat="currency in paginatedCurrencies">
 						<td>
 							<a href="https://coinmarketcap.com/currencies/{{ currency.id }}">
 							{{ currency.name }}
 							</a>
 						</td>
-						<td>${{ currency.price | number: 2}}</td>
+						<td>${{ currency.price | number: 2 }}</td>
 						<td align="center">{{ currency.monthlyAveragePopularity }}</td>
 						<td align="center">{{ currency.threeDayAveragePopularity }}</td>
 						<td align="center">
@@ -121,6 +141,12 @@
 						</td>
 					</tr>
 				</table>
+
+				<!-- Pagination -->
+				<div class="text-center">
+					<ul uib-pagination total-items="totalItems" ng-model="currentPage" items-per-page="itemsPerPage"></ul>
+				</div>	
+
 			</div>
 		</div>
 		<!--Footer-->
