@@ -14,22 +14,47 @@
 			});
 			
 			function showCCPI(){
-			   		var modal = document.getElementById("modalPopup");
-			   		modal.classList.add("hidden");
+				//close all other modals
+			   	var modal = document.getElementById("disclaimerModal");
+			   	modal.classList.add("hidden");
+			   	var modal = document.getElementById("explanationModal");
+			   	modal.classList.add("hidden");
 			
+				//show the ccpi table
 				var table = document.getElementById("ccpi");
 				table.classList.remove("hidden");
+				//and the explanation link
+				var table = document.getElementById("whatIsThisLink");
+				table.classList.remove("hidden");
+				
 			}
+
+			function showExplanation(){		
+				//var table = document.getElementById("ccpi");
+				//table.classList.add("hidden");
+
+				var modal = document.getElementById("explanationModal");
+			   	modal.classList.remove("hidden");
+			}
+
+
 		</script>
 	</head>
 	<body>
-		<h1 class="text-center"> Cryptocurrency Popularity Index</h1>
-		<!-- Disclaimer-->
-		<div class="model w-50" id="modalPopup" tabindex="-1" role="dialog">
+		<div class="text-center" style="margin-top:30px">
+			<h1 class="text-center" style="display: inline"> Cryptocurrency Popularity Index</h1>
+			<span id="whatIsThisLink" class="hidden">
+				<b>
+					<a href="#" onclick="showExplanation()">  What is this?</a>
+				</b>	
+			</span>	
+		</div>	
+		<!-- Disclaimer Modal-->
+		<div class="model w-50" id="disclaimerModal" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-dialog-centered " role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h3 class="modal-title" id="exampleModalLongTitle">Disclaimer</h3>
+						<h3 class="modal-title">Disclaimer</h3>
 					</div>
 					<div class="modal-body">
 						This data aggregation is for informational purposes only. 
@@ -42,9 +67,36 @@
 				</div>
 			</div>
 		</div>
+		<!-- Explanation Modal -->
+		<div class="model w-50 hidden" id="explanationModal" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered " role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title">What is this?</h3>
+					</div>
+					<div class="modal-body">
+						<p>This program uses Google Trends to see which cryptocurrencies are trending in popularity. </p>
+						<p>
+							The top 100 cryptocurrencies are retrieved from <a href="https://coinmarketcap.com/">Coinmarketcap</a> and then sorted by their increase in popularity.
+						<p>	
+							This increase is defined as the average popularity score of the last three days when compared to the average popularity score of the last 30 days. 
+							(Indicating a recent increase in popularity.)
+						</p>	
+						</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="showCCPI()">Got it</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- The CCPI table -->
 		<div ng-app="myApp" ng-controller="customersCtrl">
 			<div id="ccpi" style="margin-top: 40px" class="hidden">
+				<!-- I coded the python portion to send the epoch time, and figured out that I need the *1000 because the time is in miliseconds -->
+				<h6 class="text-center">
+					Data last retrieved:: {{ currencies[0].lastUpdated * 1000  |  date:"MM/dd/yyyy 'at' h:mma" }}
+				</h6>
 				<table class="table" style="width: auto; margin:auto;">
 					<tr scope="row">
 						<th>Cryptocurrency</th>
@@ -74,8 +126,8 @@
 		<!--Footer-->
 		<footer class="page-footer font-small blue pt-4 mt-4" style="margin-top: 40px">
 			<div class="footer-copyright py-3 text-center">
-				Created by Drake Davis. See the code behind this on
-				<a href="https://github.com/Drakexor/CryptoCurrencyPopularityIndex"> GitHub</a>.
+				Created by <a href="http://drake.technology">Drake Davis</a>. See the code behind this on
+				<a href="https://github.com/Drakexor/CryptoCurrencyPopularityIndex/tree/master/CPI/CryptoPopularityIndex"> GitHub</a>.
 			</div>
 		</footer>
 	</body>
