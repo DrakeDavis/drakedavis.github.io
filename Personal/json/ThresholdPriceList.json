@@ -40,13 +40,28 @@
       "threshold": 1.8
     },
     {
-      "name": "Unstable Swamp",
+      "name": "Unstable Swamp NM",
       "conditionId": 3539210,
       "threshold": 1.5
     },
     {
-      "name": "Unstable Swamp",
+      "name": "Unstable Swamp LP",
       "conditionId": 3539211,
       "threshold": 1.5
+    },
+    {
+      "name": "Palm Tree Island NM",
+      "conditionId": 12663,
+      "threshold": 0.4
+    },
+    {
+      "name": "Palm Tree Island LP",
+      "conditionId": 367913,
+      "threshold": 0.3
+    },
+    {
+      "name": "Palm Tree Island MP",
+      "conditionId": 12664,
+      "threshold": 0.24
     }
 ]
