@@ -1,0 +1,52 @@
+[
+    {
+      "name": "Unstable Plains NM",
+      "conditionId": 3539190,
+      "threshold": 1.4
+    },
+    {
+      "name": "Unstable Plains LP",
+      "conditionId": 3539191,
+      "threshold": 1.2
+    },
+    {
+      "name": "Unstable Forest NM",
+      "conditionId": 3539230,
+      "threshold": 2.0
+    },
+    {
+      "name": "Unstable Forest LP",
+      "conditionId": 3539231,
+      "threshold": 2.0
+    },
+    {
+      "name": "Unstable Island NM",
+      "conditionId": 3539200,
+      "threshold": 2.5
+    },
+    {
+      "name": "Unstable Island LP",
+      "conditionId": 3539201,
+      "threshold": 2.2
+    },
+    {
+      "name": "Unstable Mountain NM",
+      "conditionId": 3539220,
+      "threshold": 1.8
+    },
+    {
+      "name": "Unstable Mountain LP",
+      "conditionId": 3539221,
+      "threshold": 1.8
+    },
+    {
+      "name": "Unstable Swamp",
+      "conditionId": 3539210,
+      "threshold": 1.5
+    },
+    {
+      "name": "Unstable Swamp",
+      "conditionId": 3539211,
+      "threshold": 1.5
+    }
+]
