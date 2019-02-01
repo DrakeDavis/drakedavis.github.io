@@ -60,8 +60,83 @@
       "threshold": 0.3
     },
     {
-      "name": "Palm Tree Island MP",
-      "conditionId": 336397,
-      "threshold": 0.24
+      "name": "Persistent Petitioners NM",
+      "conditionId": 3947087,
+      "threshold": 0.28
+    },
+    {
+      "name": "Persistent Petitioners LP",
+      "conditionId": 3947088,
+      "threshold": 0.25
+    },
+    {
+      "name": "Wizards Lightning NM",
+      "conditionId": 3614159,
+      "threshold": 0.75
+    },
+    {
+      "name": "Wizards Lightning LP",
+      "conditionId": 3614160,
+      "threshold": 0.70
+    },
+    {
+      "name": "Risk Factor Reg NM",
+      "conditionId": 3850655,
+      "threshold": 3.50
+    },
+    {
+      "name": "Risk Factor Reg LP",
+      "conditionId": 3850656,
+      "threshold": 3.00
+    },
+    {
+      "name": "Risk Factor Promo NM",
+      "conditionId": 3889768,
+      "threshold": 4.00
+    },
+    {
+      "name": "Risk Factor Promo LP",
+      "conditionId": 3889769,
+      "threshold": 4.00
+    },
+    {
+      "name": "Guttersnipe Promo NM",
+      "conditionId": 3765594,
+      "threshold": 1.00
+    },
+    {
+      "name": "Guttersnipe Promo LP",
+      "conditionId": 3765595,
+      "threshold": 0.75
+    },
+    {
+      "name": "LLanowar Elves Promo NM",
+      "conditionId": 3624749,
+      "threshold": 5.99
+    },
+    {
+      "name": "LLanowar Elves Promo LP",
+      "conditionId": 3624750,
+      "threshold": 4.99
+    },
+    {
+      "name": "Light up the stage Promo NM",
+      "conditionId": 3925937,
+      "threshold": 5.99
+    },
+    {
+      "name": "Light up the stage Promo LP",
+      "conditionId": 3925938,
+      "threshold": 4.99
+    },
+    {
+      "name": "Growth Spiral Promo NM",
+      "conditionId": 3925922,
+      "threshold": 3.99
+    },
+    {
+      "name": "Growth Spiral Promo LP",
+      "conditionId": 3925923,
+      "threshold": 2.99
     }
 ]
