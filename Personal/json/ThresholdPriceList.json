@@ -138,5 +138,35 @@
       "name": "Growth Spiral Promo LP",
       "conditionId": 3925923,
       "threshold": 2.99
+    },
+    {
+      "name": "Duress Urza's Saga NM",
+      "conditionId": 20334,
+      "threshold": 0.50
+    },
+    {
+      "name": "Duress Urza's Saga LP",
+      "conditionId": 369615,
+      "threshold": 0.40
+    },
+    {
+      "name": "Unglued Gobline Token NM",
+      "conditionId": 15173,
+      "threshold": 1.00
+    },  
+    {
+      "name": "Unglued Gobline Token LP",
+      "conditionId": 364119,
+      "threshold": 0.75
+    },
+    {
+      "name": "Promo Opt NM",
+      "conditionId": 3634021,
+      "threshold": 3.29
+    },  
+    {
+      "name": "Promo Opt LP",
+      "conditionId": 3634022,
+      "threshold": 2.75
     }
 ]
