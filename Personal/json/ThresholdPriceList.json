@@ -168,5 +168,25 @@
       "name": "Promo Opt LP",
       "conditionId": 3634022,
       "threshold": 2.75
+    },
+    {
+      "name": "The Rack 4th NM",
+      "conditionId": 16074,
+      "threshold": 1.5
+    },  
+    {
+      "name": "The Rack 4th LP",
+      "conditionId": 365020,
+      "threshold": 1.2
+    },
+    {
+      "name": "Blackmail NM",
+      "conditionId": 22899,
+      "threshold": 0.75
+    },  
+    {
+      "name": "Blackmail LP",
+      "conditionId": 372180,
+      "threshold": 0.69
     }
 ]
