@@ -122,32 +122,22 @@
     {
       "name": "Light up the stage Promo NM",
       "conditionId": 3925937,
-      "threshold": 5.99
+      "threshold": 3.49
     },
     {
       "name": "Light up the stage Promo LP",
       "conditionId": 3925938,
-      "threshold": 4.99
+      "threshold": 3.49
     },
     {
       "name": "Growth Spiral Promo NM",
       "conditionId": 3925922,
-      "threshold": 3.99
+      "threshold": 3.49
     },
     {
       "name": "Growth Spiral Promo LP",
       "conditionId": 3925923,
-      "threshold": 2.99
-    },
-    {
-      "name": "Duress Urza's Saga NM",
-      "conditionId": 20334,
-      "threshold": 0.50
-    },
-    {
-      "name": "Duress Urza's Saga LP",
-      "conditionId": 369615,
-      "threshold": 0.40
+      "threshold": 3.29
     },
     {
       "name": "Unglued Gobline Token NM",
@@ -168,25 +158,5 @@
       "name": "Promo Opt LP",
       "conditionId": 3634022,
       "threshold": 2.75
-    },
-    {
-      "name": "The Rack 4th NM",
-      "conditionId": 16074,
-      "threshold": 1.5
-    },  
-    {
-      "name": "The Rack 4th LP",
-      "conditionId": 365020,
-      "threshold": 1.2
-    },
-    {
-      "name": "Blackmail NM",
-      "conditionId": 22899,
-      "threshold": 0.75
-    },  
-    {
-      "name": "Blackmail LP",
-      "conditionId": 372180,
-      "threshold": 0.69
     }
 ]
