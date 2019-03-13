@@ -82,12 +82,12 @@
     {
       "name": "Risk Factor Reg NM",
       "conditionId": 3850655,
-      "threshold": 3.50
+      "threshold": 3.00
     },
     {
       "name": "Risk Factor Reg LP",
       "conditionId": 3850656,
-      "threshold": 3.00
+      "threshold": 2.75
     },
     {
       "name": "Risk Factor Promo NM",
@@ -122,22 +122,22 @@
     {
       "name": "Light up the stage Promo NM",
       "conditionId": 3925937,
-      "threshold": 3.49
+      "threshold": 3.00
     },
     {
       "name": "Light up the stage Promo LP",
       "conditionId": 3925938,
-      "threshold": 2.99
+      "threshold": 2.75
     },
     {
       "name": "Growth Spiral Promo NM",
       "conditionId": 3925922,
-      "threshold": 3.49
+      "threshold": 3.00
     },
     {
       "name": "Growth Spiral Promo LP",
       "conditionId": 3925923,
-      "threshold": 3.29
+      "threshold": 2.75
     },
     {
       "name": "Unglued Gobline Token NM",
