@@ -70,16 +70,6 @@
       "threshold": 0.25
     },
     {
-      "name": "Wizards Lightning NM",
-      "conditionId": 3614159,
-      "threshold": 0.75
-    },
-    {
-      "name": "Wizards Lightning LP",
-      "conditionId": 3614160,
-      "threshold": 0.70
-    },
-    {
       "name": "Risk Factor Reg NM",
       "conditionId": 3850655,
       "threshold": 3.00
