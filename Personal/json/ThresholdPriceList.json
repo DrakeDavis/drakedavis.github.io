@@ -122,12 +122,12 @@
     {
       "name": "Growth Spiral Promo NM",
       "conditionId": 3925922,
-      "threshold": 3.00
+      "threshold": 2.25
     },
     {
       "name": "Growth Spiral Promo LP",
       "conditionId": 3925923,
-      "threshold": 2.75
+      "threshold": 1.8
     },
     {
       "name": "Unglued Gobline Token NM",
