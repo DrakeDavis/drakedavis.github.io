@@ -112,17 +112,17 @@
     {
       "name": "Light up the stage Promo NM",
       "conditionId": 3925937,
-      "threshold": 3.00
+      "threshold": 2.5
     },
     {
       "name": "Light up the stage Promo LP",
       "conditionId": 3925938,
-      "threshold": 2.75
+      "threshold": 2.25
     },
     {
       "name": "Growth Spiral Promo NM",
       "conditionId": 3925922,
-      "threshold": 2.25
+      "threshold": 2.0
     },
     {
       "name": "Growth Spiral Promo LP",
