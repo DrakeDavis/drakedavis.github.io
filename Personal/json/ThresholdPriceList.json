@@ -72,22 +72,22 @@
     {
       "name": "Risk Factor Reg NM",
       "conditionId": 3850655,
-      "threshold": 3.00
+      "threshold": 2.00
     },
     {
       "name": "Risk Factor Reg LP",
       "conditionId": 3850656,
-      "threshold": 2.75
+      "threshold": 1.75
     },
     {
       "name": "Risk Factor Promo NM",
       "conditionId": 3889768,
-      "threshold": 4.00
+      "threshold": 3.00
     },
     {
       "name": "Risk Factor Promo LP",
       "conditionId": 3889769,
-      "threshold": 4.00
+      "threshold": 2.00
     },
     {
       "name": "Guttersnipe Promo NM",
