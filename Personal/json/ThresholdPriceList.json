@@ -62,12 +62,12 @@
     {
       "name": "Persistent Petitioners NM",
       "conditionId": 3947087,
-      "threshold": 0.28
+      "threshold": 0.25
     },
     {
       "name": "Persistent Petitioners LP",
       "conditionId": 3947088,
-      "threshold": 0.25
+      "threshold": 0.24
     },
     {
       "name": "Risk Factor Reg NM",
@@ -122,12 +122,12 @@
     {
       "name": "Growth Spiral Promo NM",
       "conditionId": 3925922,
-      "threshold": 1.0
+      "threshold": 0.75
     },
     {
       "name": "Growth Spiral Promo LP",
       "conditionId": 3925923,
-      "threshold": 0.78
+      "threshold": 0.60
     },
     {
       "name": "Unglued Gobline Token NM",
