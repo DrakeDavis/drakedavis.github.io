@@ -72,12 +72,12 @@
     {
       "name": "Risk Factor Reg NM",
       "conditionId": 3850655,
-      "threshold": 2.00
+      "threshold": 1.25
     },
     {
       "name": "Risk Factor Reg LP",
       "conditionId": 3850656,
-      "threshold": 1.75
+      "threshold": 1.05
     },
     {
       "name": "Risk Factor Promo NM",
