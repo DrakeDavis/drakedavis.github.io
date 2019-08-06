@@ -52,12 +52,12 @@
     {
       "name": "Palm Tree Island NM",
       "conditionId": 12663,
-      "threshold": 0.4
+      "threshold": 0.3
     },
     {
       "name": "Palm Tree Island LP",
       "conditionId": 367913,
-      "threshold": 0.3
+      "threshold": 0.25
     },
     {
       "name": "Persistent Petitioners NM",
