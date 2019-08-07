@@ -2,12 +2,12 @@
     {
       "name": "Unstable Plains NM",
       "conditionId": 3539190,
-      "threshold": 1.4
+      "threshold": 1.2
     },
     {
       "name": "Unstable Plains LP",
       "conditionId": 3539191,
-      "threshold": 1.2
+      "threshold": 1.15
     },
     {
       "name": "Unstable Forest NM",
