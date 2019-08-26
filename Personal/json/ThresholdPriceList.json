@@ -130,17 +130,6 @@
       "threshold": 5.0
     },
     {
-      "name": "Arclight Phoenix NM",
-      "conditionId": 3849775,
-      "threshold": 16.50
-    },
-    {
-      "name": "Arclight Phoenix LP",
-      "conditionId": 3849776,
-      "threshold": 15.00
-    },
-
-    {
       "name": "Revised Tundra NM",
       "conditionId": 15728,
       "threshold": 200.00
