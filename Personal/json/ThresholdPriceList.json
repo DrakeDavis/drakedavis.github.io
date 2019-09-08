@@ -72,12 +72,12 @@
     {
       "name": "LLanowar Elves Promo NM",
       "conditionId": 3624749,
-      "threshold": 5.99
+      "threshold": 4.00
     },
     {
       "name": "LLanowar Elves Promo LP",
       "conditionId": 3624750,
-      "threshold": 4.99
+      "threshold": 3.50
     },
     {
       "name": "Unglued Gobline Token NM",
