@@ -62,12 +62,12 @@
     {
       "name": "Persistent Petitioners NM",
       "conditionId": 3947087,
-      "threshold": 0.25
+      "threshold": 0.18
     },
     {
       "name": "Persistent Petitioners LP",
       "conditionId": 3947088,
-      "threshold": 0.25
+      "threshold": 0.18
     },
     {
       "name": "LLanowar Elves Promo NM",
