@@ -114,10 +114,12 @@
 		<!-- The CCPI table -->
 		<div ng-app="myApp" ng-controller="ccpiCtrl">
 			<div id="ccpi" style="margin-top: 40px" class="hidden">
-				<!-- I coded the python portion to send the epoch time, and figured out that I need the *1000 because the time is in miliseconds -->
-				<h6 class="text-center">
-					Data last retrieved at: {{ currencies[0].lastUpdated * 1000  |  date:"MM/dd/yyyy 'at' h:mma" }}
-				</h6>
+				<!-- Temporarily commenting out -->
+				<!--
+					<h6 class="text-center">
+						Data last retrieved at: {{ currencies[0].lastUpdated * 1000  |  date:"MM/dd/yyyy 'at' h:mma" }}
+					</h6>
+				-->
 				<table class="table" style="width: auto; margin:auto;">
 					<tr scope="row">
 						<th>Cryptocurrency</th>
