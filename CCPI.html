@@ -121,8 +121,8 @@
 					<tr scope="row">
 						<th>Cryptocurrency</th>
 						<th>Price</th>
-						<th>Monthly Popularity Average</th>
-						<th>3day Popularity Average</th>
+						<th>Last Week's Popularity Average</th>
+						<th>Current Popularity</th>
 						<th>Popularity change</th>
 					</tr>
 					<tr ng-repeat="currency in paginatedCurrencies">
@@ -132,11 +132,11 @@
 							</a>
 						</td>
 						<td>${{ currency.price | number: 3 }}</td>
-						<td align="center">{{ currency.monthlyAveragePopularity }}</td>
-						<td align="center">{{ currency.threeDayAveragePopularity }}</td>
+						<td align="center">{{ currency.weeklyAveragePopularity }}</td>
+						<td align="center">{{ currency.currentPopularity }}</td>
 						<td align="center">
-							<a href="https://trends.google.com/trends/explore?date=today%201-m&q={{ currency.name }}">
-							{{ currency.percentChange }}%
+							<a href="https://trends.google.com/trends/explore?date=now%207-d&q={{ currency.name }}">
+							{{ currency.percentChange }}% {{currency.percentChange > 200 ? "🔥" : ""}}
 							</a>
 						</td>
 					</tr>
