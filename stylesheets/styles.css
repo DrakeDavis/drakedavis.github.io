@@ -50,6 +50,25 @@ a {
     cursor: pointer;
 }
 
+.main .projects .infoBox .infoLink {
+    float: left;
+    margin-right: 20px;
+    font-size: 30px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.main .projects {
+        margin-left: 7%;
+    margin-top: 7px;
+    width: 93%;
+    display: inline-block;
+    display: flex;
+    flex-direction: column; /* stack children vertically */
+    gap: 10px;              /* spacing between links */
+}
+
+
 .defunct {
     opacity: 0.5;          /* makes it look faded */
     font-style: italic;    /* optional: italicize to indicate inactivity */
