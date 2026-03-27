@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,300);
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
 
 body,
 html {
     padding: 0;
     margin: 0;
-    font-family: lato;
+    font-family: 'Lato', sans-serif;
     background-color: #FAFAFA;
     background-size: cover;
 }
@@ -55,7 +55,6 @@ a:hover {
     margin-right: 20px;
     font-size: 30px;
     font-weight: 300;
-    cursor: pointer;
 }
 
 .main .projects .infoBox .infoLink {
@@ -63,17 +62,23 @@ a:hover {
     margin-right: 20px;
     font-size: 30px;
     font-weight: 300;
-    cursor: pointer;
 }
 
 .main .projects {
-        margin-left: 7%;
+    margin-left: 7%;
     margin-top: 7px;
     width: 93%;
-    display: inline-block;
     display: flex;
-    flex-direction: column; /* stack children vertically */
-    gap: 10px;              /* spacing between links */
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main .projects--latest {
+    margin-top: 75px;
+}
+
+.main .projects--previous {
+    margin-top: 25px;
 }
 
 
@@ -117,7 +122,12 @@ a:hover {
 
     /* Target the first .projects div (directly after contactInfo) */
     .main .contactInfo + .projects {
-        margin-top: 28px !important;
+        margin-top: 28px;
+    }
+
+    .main .projects--latest,
+    .main .projects--previous {
+        margin-top: 15px;
     }
 
     .main .contactInfo .infoBox {
@@ -133,7 +143,6 @@ a:hover {
 
     .main .projects {
         margin-left: 5%;
-        margin-top: 15px !important;
         font-size: 18px;
     }
 
