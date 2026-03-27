@@ -4,6 +4,7 @@
 <head>
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Contact - Drake Davis</title>
     <link rel="icon" type="image/ico" href="favicon.ico" sizes="32x32" />
@@ -12,6 +13,10 @@
         .main {
             position: static;
             min-height: 100%;
+        }
+
+        .main .mainContent {
+            margin: 4% 15% 0 7%;
         }
 
         .pgp-block {
@@ -27,6 +32,8 @@
             color: #333;
             width: fit-content;
             max-width: 86%;
+            overflow-x: auto;
+            box-sizing: border-box;
         }
 
         .contact-label {
@@ -42,30 +49,42 @@
             font-size: 20px;
             font-weight: 300;
         }
-    </style>
-    <script>
-        (function(i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function() {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-77130689-1', 'auto');
-        ga('send', 'pageview');
-    </script>
+        @media only screen and (max-width: 768px) {
+            .main .mainContent .top b {
+                font-size: 32px;
+            }
+
+            .pgp-block {
+                margin: 20px 5% 0 5%;
+                max-width: 90%;
+                font-size: 8.5px;
+                padding: 10px;
+            }
+
+            .contact-label {
+                margin: 20px 5% 8px 5%;
+                font-size: 18px;
+            }
+
+            .contact-label code {
+                font-size: 11px;
+                word-break: break-all;
+            }
+
+            .back-link {
+                margin: 20px 5%;
+                font-size: 18px;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="main">
         <div class="mainContent">
             <div class="top">
-                <b style="font-size: 72px;">Drake Davis</b>
+                <b>Drake Davis</b>
             </div>
         </div>
 
