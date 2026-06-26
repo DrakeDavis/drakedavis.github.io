@@ -158,9 +158,10 @@
     import * as THREE from "three";
     import { OrbitControls } from "three/addons/controls/OrbitControls.js";
     import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+    import { DRACOLoader } from "three/addons/loaders/DRACOLoader.js";
 
     const MODEL_URLS = [
-      "./wizards.glb"
+      "https://drake.technology/wizards.glb"
     ];
 
     const canvas = document.getElementById("viewer");
@@ -212,7 +213,11 @@
     keyLight.position.set(3, 5, 4);
     scene.add(keyLight);
 
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath("https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/libs/draco/gltf/");
+
     const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
     let activeModel = null;
     let animationFrame = 0;
     let isVisible = true;
@@ -276,13 +281,19 @@
         loader.load(
           url,
           (gltf) => {
-            clearModel();
-            activeModel = gltf.scene;
-            scene.add(activeModel);
-            frameModel(activeModel);
-            hideLoader();
-            setStatus(label);
-            resolve();
+            try {
+              const root = gltf.scene ?? gltf.scenes?.[0];
+              if (!root) throw new Error("No scene found in GLB.");
+              clearModel();
+              activeModel = root;
+              scene.add(activeModel);
+              frameModel(activeModel);
+              hideLoader();
+              setStatus(label);
+              resolve();
+            } catch (err) {
+              reject(err);
+            }
           },
           (xhr) => setProgress(xhr.loaded, xhr.total),
           reject
@@ -299,6 +310,7 @@
           continue;
         }
       }
+      hideLoader();
       setStatus("Model not found.", "error");
     }
 
