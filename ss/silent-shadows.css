@@ -1,0 +1,53 @@
+:root{color-scheme:light;--ink:#263b63;--navy:#344a79;--sky:#dfe8f5;--panel:#909091;--line:#d5d5d5;--olive:#85835a;--scale:1;font-family:"Fixedsys","Lucida Console",Monaco,monospace;background:#343d4c;color:#fff}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#343d4c}
+body{overflow:auto;touch-action:pan-x pan-y}
+#app{min-height:100vh;display:flex;align-items:center;flex-direction:column;padding:0 0 8px}
+#game-shell{position:relative;width:min(858px,100vw);max-width:858px;flex:none;isolation:isolate;background:#dfe6f3;border-bottom:3px solid #77754f;box-shadow:0 7px 30px #1118;user-select:none;-webkit-user-select:none}
+#titlebar{height:28px;background:linear-gradient(#d6dfb0,#99aa6a);border-bottom:1px solid #788554;color:#f2f0d5;text-shadow:1px 1px #494937;display:flex;align-items:center;padding:0 9px;gap:7px;font-family:Tahoma,Arial,sans-serif;font-size:12px;letter-spacing:.1px;position:relative;z-index:2}
+#titlebar img{width:16px;height:16px;object-fit:cover;object-position:center;border:1px solid #d1d0ad;background:#302b48}
+#build-version{font:10px "Lucida Console",monospace;letter-spacing:0;background:#666447aa;border:1px solid #c3c19a;border-radius:2px;padding:2px 4px;color:#fffbdc;text-shadow:none;white-space:nowrap}
+#window-controls{margin-left:auto;height:24px;display:flex;align-items:center;gap:5px}
+#titlebar button{height:21px;min-width:48px;padding:0 7px;border:1px solid #6d6b4c;border-radius:2px;background:linear-gradient(#c4c3ad,#949277);color:#34425b;font:10px "Lucida Console",monospace;line-height:17px;box-shadow:inset 1px 1px #e7e5d4,1px 1px #59573e}
+#titlebar button:hover{filter:brightness(1.12)}
+#game-shell.maximized{width:min(100vw,calc((100vh - 28px)*858/600));max-width:none;border-bottom:0;box-shadow:none}
+#game-shell.maximized #scene{width:100%;height:auto;aspect-ratio:858/600}
+#scene{display:block;width:100%;height:auto;aspect-ratio:858/600;image-rendering:pixelated;image-rendering:crisp-edges;background:#7a8367;touch-action:none}
+#storage-note{font:11px "Lucida Console",monospace;opacity:.8;padding:6px 10px;text-align:center}
+#touch-controls{display:none;align-items:center;justify-content:space-between;gap:10px;width:min(858px,100vw);padding:8px max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));background:#555747;border-top:2px solid #b9b7a4;touch-action:none}
+.dpad{display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:4px}.dpad button{grid-column:2}.dpad button[data-move=left]{grid-column:1;grid-row:2}.dpad button[data-move=down]{grid-column:2;grid-row:2}.dpad button[data-move=right]{grid-column:3;grid-row:2}
+.touch-actions{display:grid;grid-template-columns:repeat(3,minmax(58px,1fr));gap:5px;flex:1;max-width:370px}
+#touch-controls button{min-height:48px;border:1px solid #d9d7c2;border-radius:3px;background:linear-gradient(#727988,#535969);color:#f5f0d7;font:bold 12px "Lucida Console",monospace;box-shadow:inset 0 1px #aeb1b7,0 1px #252a35;touch-action:none;user-select:none}
+#touch-controls button.active{background:#a49449;color:#fff5b2}
+#modal-root:empty{display:none}
+#modal-root{position:absolute;inset:28px 0 0;z-index:5;display:flex;justify-content:center;align-items:center;padding:16px;background:#10131b66;color:#111;user-select:text;-webkit-user-select:text}
+.dialog{width:min(520px,96%);max-height:94%;overflow:auto;background:linear-gradient(135deg,#f6f7fb,#d4d8e3);border:3px ridge #f3f3f3;box-shadow:0 4px 20px #000b;color:#242934;padding:13px 16px;font:12px "Lucida Console",monospace}
+.dialog h2{font:bold 17px "Lucida Console",monospace;color:#344d7c;margin:0 0 12px;border-bottom:2px solid #8c8e96;padding-bottom:7px;text-shadow:1px 1px #fff}
+.dialog p{line-height:1.5}.dialog label{display:flex;flex-direction:column;gap:4px;margin:8px 0;color:#3f5278;font-weight:bold}.dialog input,.dialog select,.dialog textarea{font:13px "Lucida Console",monospace;padding:7px;border:1px inset #a9a9a9;background:#fff;color:#1e2530}.dialog button,.classic-button{border:1px solid #6b7690;background:linear-gradient(#fefefe,#cfd4df);color:#35496d;padding:7px 10px;font:bold 11px "Lucida Console",monospace;cursor:pointer;box-shadow:inset 1px 1px #fff,1px 1px #8790a0}.dialog button:hover,.classic-button:hover{filter:brightness(1.08)}.dialog button.primary{background:linear-gradient(#596b95,#394d78);color:#fff}.dialog button.danger{background:#883c44;color:#fff}.dialog .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dialog .slot-row{border-bottom:1px solid #a9abb2;padding:7px 0;display:flex;justify-content:space-between;align-items:center;gap:8px}.dialog .muted{color:#666;font-size:11px}.dialog .scroll{max-height:180px;overflow:auto;background:#fff;border:1px inset #aaa;padding:6px}.dialog .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.dialog pre{white-space:pre-wrap;font:11px "Lucida Console",monospace;background:#e7e8eb;padding:8px}.toast{position:absolute;z-index:4;left:20%;right:20%;top:34px;background:#e9e8d6;border:2px outset #fff;color:#283d63;padding:9px;text-align:center;font:11px "Lucida Console",monospace;box-shadow:0 2px 6px #0008}
+@media (pointer:coarse),(max-width:720px){#touch-controls{display:flex}#storage-note{padding-bottom:calc(6px + env(safe-area-inset-bottom))}body{overscroll-behavior:contain}}
+@media (max-width:390px){#window-max{display:none}#titlebar{gap:5px;padding:0 6px}#titlebar button{min-width:38px;padding:0 4px}}
+@media (orientation:portrait) and (max-width:720px){#app{justify-content:flex-start}#touch-controls{flex-direction:column;align-items:stretch}.dpad{align-self:center}.touch-actions{max-width:none;width:100%}#storage-note{font-size:10px}}
+@media (max-height:560px) and (orientation:landscape){#app{padding:0}#game-shell{width:auto;height:100dvh;max-width:none;display:flex;flex-direction:column;border:0}#scene{width:auto;height:calc(100dvh - 28px);max-height:none;aspect-ratio:auto}#touch-controls{position:absolute;right:0;bottom:0;width:auto;background:#40495d99;border:0;display:flex;flex-direction:column;max-width:180px}.dpad{grid-template-columns:repeat(3,40px);grid-template-rows:repeat(2,40px)}#touch-controls button{min-height:40px}.touch-actions{grid-template-columns:repeat(2,65px)}}
+#storage-note{display:none}
+.dialog .bank-quantity{width:78px;min-width:60px;padding:5px}.toast{z-index:8}
+
+/* Menus use native screen text; the map keeps its original bitmap lettering. */
+:root{font-family:"Segoe UI",Arial,sans-serif;--ink:#1b2530}
+#scene{image-rendering:auto}
+#titlebar{font-family:"Segoe UI",Arial,sans-serif;color:#1b2530;text-shadow:none;font-size:13px}
+#titlebar button{font:12px "Segoe UI",Arial,sans-serif;color:#1b2530}
+.dialog{font:14px/1.45 "Segoe UI",Arial,sans-serif;color:#1b2530;background:linear-gradient(135deg,#f4f5f7,#dadddf)}
+.dialog h2{font:600 18px "Segoe UI",Arial,sans-serif;color:#1b2530;text-shadow:none}
+.dialog h3{font:600 15px "Segoe UI",Arial,sans-serif;color:#1b2530}
+.dialog label{color:#263747}
+.dialog input,.dialog select,.dialog textarea{font:14px "Segoe UI",Arial,sans-serif;color:#1b2530}
+.dialog button,.classic-button{font:600 13px "Segoe UI",Arial,sans-serif;color:#1b2530}
+.dialog button:disabled{color:#515c66;background:#dadddf;opacity:1;cursor:default}
+.dialog .muted{color:#46515c;font-size:13px}
+.dialog .slot-row>span{min-width:0;overflow-wrap:anywhere}
+.dialog .slot-row>button{flex-shrink:0}
+.dialog pre{font:12px/1.45 Consolas,monospace;color:#1b2530}
+.dialog button:focus-visible,.dialog input:focus-visible,.dialog select:focus-visible{outline:2px solid #253f5a;outline-offset:2px}
+.toast{font:13px/1.4 "Segoe UI",Arial,sans-serif;color:#1b2530}
+#touch-controls button{font:600 12px "Segoe UI",Arial,sans-serif}
+@media(max-width:390px){#titlebar{font-size:12px}}
