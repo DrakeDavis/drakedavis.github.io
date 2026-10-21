@@ -1,5 +1,5 @@
-const PACKAGE_ID="abea755e59561c34243a";
-const VERIFIED_FILES=[{"path":"silent-shadows.js","bytes":11736827,"sha256":"097ac0a4bc7b8db2cbed750937d330a50cb9f53bdad68f88e18c87c530140992"},{"path":"silent-shadows.css","bytes":7832,"sha256":"570832fe6fb6a9c4a73aec1ef7991df779b28f2a6c3b7ae512000ab6b018d872"}];
+const PACKAGE_ID="9eb01817b38583b53499";
+const VERIFIED_FILES=[{"path":"silent-shadows.js","bytes":11741269,"sha256":"e2bc6fd4c465ab857316d73d703289cd5218a267254de6029e2c60e49d09a3c1"},{"path":"silent-shadows.css","bytes":9231,"sha256":"f36d659a47f40fc7978d6d2d1741f2e622e4d96c95dbd3f804ddf08a54ddcfcf"}];
 // Build template. The builder supplies PACKAGE_ID and VERIFIED_FILES.
 const prefix = 'silent-shadows-package-'+encodeURIComponent(self.registration.scope)+'-';
 const marker = new URL('__package-ready.json', self.registration.scope).href;

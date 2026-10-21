@@ -51,3 +51,19 @@ body{overflow:auto;touch-action:pan-x pan-y}
 .toast{font:13px/1.4 "Segoe UI",Arial,sans-serif;color:#1b2530}
 #touch-controls button{font:600 12px "Segoe UI",Arial,sans-serif}
 @media(max-width:390px){#titlebar{font-size:12px}}
+
+/* Phone dialogs belong to the visible viewport, not the scaled map. */
+@media (pointer:coarse),(max-width:720px){
+  #modal-root{position:fixed;inset:var(--dialog-top,0px) 0 auto;height:var(--dialog-height,100dvh);padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));overflow:hidden}
+  .dialog{width:min(520px,100%);max-height:100%;min-height:0;overscroll-behavior:contain;padding:12px;scroll-padding:12px;-webkit-overflow-scrolling:touch}
+  .dialog input,.dialog select,.dialog textarea{font-size:16px;min-width:0;max-width:100%;min-height:44px}
+  .dialog button{min-height:44px}
+  .dialog .grid>*{min-width:0}
+}
+@media (pointer:coarse) and (max-height:560px) and (orientation:landscape),(max-width:720px) and (max-height:560px) and (orientation:landscape){
+  #app{padding:0;flex-direction:row;align-items:flex-start;justify-content:center;gap:8px;min-height:100dvh}
+  #game-shell{width:min(calc(100vw - 188px),calc((100dvh - 28px)*858/600));height:auto;max-width:none;border:0;display:block}
+  #scene{width:100%;height:auto;aspect-ratio:858/600}
+  #touch-controls{position:static;width:180px;flex:none;max-height:100dvh;overflow-y:auto;border:0;display:flex;flex-direction:column;padding:6px;background:#555747}
+  .touch-actions{grid-template-columns:repeat(2,minmax(0,1fr));width:100%;flex:none}
+}
