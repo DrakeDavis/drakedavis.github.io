@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17171c">
+  <meta name="description" content="Four friends. One rooftop. Pick your fighter and take on the crew.">
+  <title>NERD FIGHT</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M4 5 38 2 36 35 2 38Z' fill='%2317171c' stroke='%23b76059' stroke-width='2'/%3E%3Ctext x='20' y='29' text-anchor='middle' font-family='Arial' font-weight='900' font-size='27' fill='%23ddd6c8'%3EN%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=embedded-1bd88a7cb722">
+  <script src="game.js?v=embedded-1bd88a7cb722" defer></script>
+</head>
+<body data-screen="select">
+  <div id="orientationScreen" class="orientation-screen" role="dialog" aria-modal="true" aria-labelledby="orientationTitle" aria-describedby="orientationDescription" tabindex="-1">
+    <svg class="rotate-icon" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="34" width="68" height="40" rx="7"/><path d="M72 46v16M25 23a28 28 0 0 1 44-6m-1-12 2 14-14 2"/></svg>
+    <h2 id="orientationTitle">Rotate your phone</h2>
+    <p id="orientationDescription">Turn your device sideways to play NERD FIGHT.</p>
+  </div>
+  <main id="selectScreen" class="select-screen">
+    <header class="select-header">
+      <p class="eyebrow"><span class="status-dot"></span> THE CREW IS ALL HERE</p>
+      <h1>NERD <span>FIGHT</span></h1>
+      <div class="section-heading"><h2 id="rosterHeading">CHOOSE YOUR FIGHTER</h2></div>
+    </header>
+
+    <section class="roster-section" aria-labelledby="rosterHeading">
+      <div class="roster" id="roster" role="group" aria-label="Choose your fighter">
+        <button class="fighter-card selected" data-character="lucas" type="button" aria-label="Choose Lucas" aria-pressed="true">
+          <span class="selection-badge" aria-hidden="true">✓ READY</span><span class="portrait-wrap"><img data-embedded-src="assets/characters/lucas-portrait.png?v=unified-4" alt="Lucas, with his long beard" draggable="false" decoding="async"></span><span class="card-footer"><span class="fighter-name">Lucas</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        </button>
+        <button class="fighter-card" data-character="turtle" type="button" aria-label="Choose Turtle" aria-pressed="false">
+          <span class="selection-badge" aria-hidden="true">✓ READY</span><span class="portrait-wrap"><img data-embedded-src="assets/characters/turtle-portrait.png?v=unified-4" alt="Turtle, with his short beard" draggable="false" decoding="async"></span><span class="card-footer"><span class="fighter-name">Turtle</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        </button>
+        <button class="fighter-card" data-character="google" type="button" aria-label="Choose Google" aria-pressed="false">
+          <span class="selection-badge" aria-hidden="true">✓ READY</span><span class="portrait-wrap"><img data-embedded-src="assets/characters/google-portrait.png?v=unified-4" alt="Google, wearing his gray beanie" draggable="false" decoding="async"></span><span class="card-footer"><span class="fighter-name">Google</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        </button>
+        <button class="fighter-card" data-character="drake" type="button" aria-label="Choose Drake" aria-pressed="false">
+          <span class="selection-badge" aria-hidden="true">✓ READY</span><span class="portrait-wrap"><img data-embedded-src="assets/characters/drake-portrait.png?v=unified-4" alt="Drake, wearing his glasses" draggable="false" decoding="async"></span><span class="card-footer"><span class="fighter-name">Drake</span><span class="card-arrow" aria-hidden="true">↗</span></span>
+        </button>
+      </div>
+      <p class="stats-legend">Light bars highlight each fighter's strength.</p>
+    </section>
+
+    <div class="start-area">
+      <button id="fightButton" class="primary-button fight-button" type="button" disabled>LOADING ART…</button>
+    </div>
+    <p id="loadStatus" class="load-status" role="status">Getting the crew ready…</p>
+
+    <footer class="select-footer">
+      <div class="keyboard-guide"><span><kbd>A</kbd><kbd>D</kbd> Move</span><span><kbd>W</kbd> Jump</span><span><kbd>J</kbd> Punch</span><span><kbd>K</kbd> Kick</span><span><kbd>L</kbd> Block</span><span><kbd>U</kbd> Special</span></div>
+    </footer>
+  </main>
+
+  <section id="faceoffScreen" class="faceoff-screen" aria-labelledby="faceoffHeading" tabindex="-1" hidden>
+    <header class="faceoff-header"><p id="faceoffProgress" class="eyebrow">FIGHT 1 OF 3</p><span class="faceoff-mode">CAMPAIGN</span></header>
+    <h2 id="faceoffHeading" class="faceoff-heading">THE NEXT BRAWL</h2>
+    <div class="faceoff-lineup">
+      <figure class="faceoff-fighter faceoff-player"><div class="faceoff-portrait"><img id="faceoffPlayerPortrait" alt="" draggable="false"></div><figcaption><span>YOU</span><strong id="faceoffPlayerName">Lucas</strong></figcaption></figure>
+      <span class="faceoff-vs" aria-hidden="true">VS</span>
+      <figure class="faceoff-fighter faceoff-opponent"><div class="faceoff-portrait"><img id="faceoffCpuPortrait" alt="" draggable="false"></div><figcaption><span id="faceoffCpuRole">CHALLENGER</span><strong id="faceoffCpuName">Turtle</strong></figcaption></figure>
+    </div>
+    <ol id="campaignRoute" class="campaign-route" aria-label="Campaign opponents"></ol>
+    <button id="faceoffContinue" class="faceoff-continue" type="button" aria-label="Continue to fight"><span class="faceoff-countdown" aria-hidden="true"><span id="faceoffTimer"></span></span></button>
+  </section>
+
+  <section id="fightScreen" class="fight-screen" aria-label="Rooftop fight" hidden>
+    <div id="fightContent" class="fight-content">
+      <div id="secretLabels" class="secret-labels" aria-hidden="true"><span hidden></span><span hidden></span></div>
+      <header class="fight-header"><span class="arena-label"><span class="status-dot"></span> ROOFTOP RUMBLE</span><button id="pauseButton" class="quiet-button" type="button" aria-label="Pause game">Ⅱ <span>Pause</span></button></header>
+      <div class="hud">
+        <div class="fighter-hud player-hud"><img id="playerPortrait" alt="" draggable="false"><div class="fighter-vitals"><div class="name-row"><strong id="playerName">Lucas</strong><span>YOU</span></div><div id="playerHealth" class="health-bar" role="progressbar" aria-label="Your health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="health-fill"></div></div><span class="health-number" id="playerHealthText">100 / 100</span></div></div>
+        <div class="timer-box"><span id="fightProgress" class="round-label">FIGHT 1/3</span><strong id="timer" aria-label="Seconds remaining">45</strong></div>
+        <div class="fighter-hud cpu-hud"><img id="cpuPortrait" alt="" draggable="false"><div class="fighter-vitals"><div class="name-row"><strong id="cpuName">Drake</strong><span id="cpuRole">CPU · 1/3</span></div><div id="cpuHealth" class="health-bar" role="progressbar" aria-label="Opponent health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"><div class="health-fill"></div></div><span class="health-number" id="cpuHealthText">100 / 100</span></div></div>
+      </div>
+
+      <div id="stageSpace" class="stage-space">
+        <div id="arenaFrame" class="arena-frame"><canvas id="arena" width="960" height="540" tabindex="0" aria-label="Fighters in the rooftop arena"></canvas><div id="roundCallout" class="round-callout" aria-hidden="true"><span>ROUND ONE</span><strong>READY?</strong></div><div class="arena-corner" aria-hidden="true">THE ROOFTOP · SUNSET SESSION</div></div>
+      </div>
+
+      <div id="controls" class="controls" role="group" aria-label="Fight controls">
+        <div class="control-group movement-controls">
+          <button class="control-button" data-action="left" type="button" aria-label="Move left"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 8h-8V3L2 12l10 9v-5h8z"/></svg><span>LEFT</span><kbd>A</kbd></button>
+          <button class="control-button" data-action="right" type="button" aria-label="Move right"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h8V3l10 9-10 9v-5H4z"/></svg><span>RIGHT</span><kbd>D</kbd></button>
+          <button class="control-button" data-action="jump" type="button" aria-label="Jump"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21V11H3l9-9 9 9h-5v10z"/></svg><span>JUMP</span><kbd>W</kbd></button>
+        </div>
+        <span class="control-divider" aria-hidden="true"></span>
+        <div class="control-group attack-controls">
+          <button class="control-button" data-action="punch" type="button" aria-label="Punch"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13V8a2 2 0 0 1 4 0V5a2 2 0 0 1 4 0v1a2 2 0 0 1 4 0v2a2 2 0 0 1 4 0v7l-4 6H8l-5-7a2 2 0 0 1 2-3l4 3v-4"/></svg><span>PUNCH</span><kbd>J</kbd></button>
+          <button class="control-button" data-action="kick" type="button" aria-label="Kick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 2 6 1-2 10 8 2 2 5H8l-5-4 3-5z"/></svg><span>KICK</span><kbd>K</kbd></button>
+          <button class="control-button" data-action="block" type="button" aria-label="Hold to block"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 9 4-1 8c-1 4-5 7-8 9-3-2-7-5-8-9L3 6z"/></svg><span>BLOCK</span><kbd>L</kbd></button>
+          <button class="control-button special-button" data-action="special" type="button" aria-label="Special ranged attack"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h8l-1 8 11-13h-8z"/></svg><span>SPECIAL</span><kbd>U</kbd><small id="specialStatus" class="special-status" aria-hidden="true" hidden></small></button>
+        </div>
+      </div>
+      <p class="fight-tip">Punch, kick or use Special mid-jump. Hold block to guard. <span>Esc / P to pause.</span></p>
+    </div>
+
+    <div id="dialogBackdrop" class="dialog-backdrop" hidden>
+      <div class="game-dialog" id="gameDialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogDescription" tabindex="-1">
+        <div id="championCelebration" class="champion-celebration" aria-hidden="true" hidden><div class="champion-portrait-frame"><img id="championPortrait" alt="" draggable="false"></div><span class="champion-seal">CHAMPION</span></div>
+        <p class="eyebrow" id="dialogEyebrow">TAKE A BREATHER</p><h2 id="dialogTitle">PAUSED</h2><p id="championSubtitle" class="champion-subtitle" hidden>Boss Drake defeated</p><p id="dialogDescription">The rooftop can wait.</p><button id="dialogPrimary" class="primary-button" type="button">RESUME</button><button id="chooseButton" class="text-button" type="button">Choose fighter <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+  </section>
+  <p id="announcement" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+  <noscript>This game needs JavaScript enabled to bring the crew to the rooftop.</noscript>
+</body>
+</html>
